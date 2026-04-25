@@ -1689,12 +1689,23 @@
     @media (max-width: 600px) {
       :root { --fs-base: 15px; }
       
-      section { padding: 6rem 6vw; }
+      section { padding: 3rem 6vw; }
+
+      .reveal { transform: translateY(15px); transition-duration: 0.6s; }
+      .reveal-right { transform: translateX(15px); transition-duration: 0.6s; }
+
+      .hero-stats { margin-top: 2.5rem; gap: 1.5rem; }
+      .hero-title { font-size: 2.6rem; }
 
       .portfolio-grid,
       .services-grid,
-      .testi-grid {
+      .testi-grid,
+      .skills-right,
+      .about-grid,
+      .skills-layout,
+      .contact-layout {
         grid-template-columns: 1fr;
+        gap: 2rem !important;
       }
 
       .portfolio-card.featured {
@@ -1706,10 +1717,8 @@
       .portfolio-card.featured .portfolio-card-info {
         width: 100%;
       }
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
     }
+
   </style>
 </head>
 
@@ -2323,7 +2332,7 @@
           ro.unobserve(el);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
 
     revealEls.forEach(el => ro.observe(el));
 
@@ -2337,7 +2346,7 @@
           barObserver.unobserve(e.target);
         }
       });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.05 });
     document.querySelectorAll('.skills-left').forEach(el => barObserver.observe(el));
 
     // ── NAV SHRINK ──
