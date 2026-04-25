@@ -29,13 +29,25 @@
       --accent2: #3498db;
       --text: #e8eaf2;
       --muted: #7a82a0;
-      --border: rgba(255, 255, 255, 0.08);
-      --glass: rgba(10, 13, 20, 0.6);
       --radius: 20px;
+
+      /* Typography System */
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-serif: 'Playfair Display', serif;
+      --fs-base: 18px;
+      --fs-h1: clamp(2.5rem, 8vw, 4.5rem);
+      --fs-h2: clamp(2rem, 5vw, 3.2rem);
+      --fs-h3: 1.75rem;
+      --fs-body: 1rem;
+      --fs-small: 0.9rem;
+      --fs-label: 0.75rem;
+      --lh-body: 1.85;
     }
 
     html {
       scroll-behavior: smooth;
+      font-size: var(--fs-base);
     }
 
     body {
@@ -45,7 +57,56 @@
       font-weight: 300;
       overflow-x: hidden;
       cursor: none;
-      line-height: 1.8;
+      line-height: var(--lh-body);
+    }
+
+    /* ── GLOBAL TYPOGRAPHY ── */
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .section-label {
+      font-size: var(--fs-label);
+      color: var(--gold);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      margin-bottom: 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.6;
+    }
+
+    .section-title {
+      font-size: var(--fs-h2);
+      margin-bottom: 1.8rem;
+      color: var(--text);
+    }
+
+    .section-title em {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .section-sub {
+      color: var(--muted);
+      max-width: 650px;
+      font-size: 1.1rem;
+      line-height: var(--lh-body);
+      margin-bottom: 3rem;
     }
 
     /* ── BACKGROUND NOISE ── */
@@ -126,7 +187,7 @@
 
     .nav-links a {
       color: var(--muted);
-      font-size: .88rem;
+      font-size: var(--fs-small);
       text-decoration: none;
       letter-spacing: .06em;
       text-transform: uppercase;
@@ -510,48 +571,7 @@
 
     /* ── SECTION BASE ── */
     section {
-      padding: 7rem 5vw;
-    }
-
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: .7rem;
-      font-size: .75rem;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.2rem;
-    }
-
-    .section-label::before {
-      content: '';
-      width: 24px;
-      height: 1px;
-      background: var(--gold);
-    }
-
-    .section-title {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 800;
-      font-size: clamp(2.2rem, 5vw, 4.2rem);
-      line-height: 1.1;
-      letter-spacing: -.03em;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-title em {
-      color: var(--gold);
-      font-style: italic;
-      font-family: 'Playfair Display', serif;
-      font-weight: 400;
-    }
-
-    .section-sub {
-      color: var(--muted);
-      max-width: 520px;
-      line-height: 1.75;
-      font-size: 1.02rem;
+      padding: 10rem 5vw;
     }
 
     /* ── ABOUT ── */
@@ -663,9 +683,9 @@
 
     .about-p {
       color: var(--muted);
-      line-height: 1.85;
-      margin-bottom: 1.2rem;
-      font-size: .98rem;
+      line-height: var(--lh-body);
+      margin-bottom: 1.5rem;
+      font-size: var(--fs-body);
     }
 
     .about-tags {
@@ -909,8 +929,8 @@
 
     .service-desc {
       color: var(--muted);
-      font-size: 1.05rem;
-      line-height: 1.7;
+      font-size: var(--fs-body);
+      line-height: var(--lh-body);
       margin-bottom: 2rem;
       position: relative;
       z-index: 2;
@@ -963,7 +983,7 @@
     }
 
     .skill-name {
-      font-size: .95rem;
+      font-size: 1rem;
       letter-spacing: .08em;
       text-transform: uppercase;
       font-weight: 500;
@@ -1002,7 +1022,7 @@
       border: 1px solid var(--border);
       padding: 1rem 1.2rem;
       border-radius: 4px;
-      font-size: .85rem;
+      font-size: var(--fs-small);
       color: var(--muted);
       text-align: center;
       letter-spacing: .06em;
@@ -1102,11 +1122,11 @@
     }
 
     .portfolio-tag {
-      font-size: 0.65rem;
+      font-size: var(--fs-label);
       color: var(--gold);
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.2em;
       margin-bottom: 1rem;
     }
 
@@ -1156,8 +1176,8 @@
 
     .portfolio-desc {
       color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.7;
+      font-size: var(--fs-body);
+      line-height: var(--lh-body);
       opacity: 0.8;
       margin-top: 1rem;
     }
@@ -1284,11 +1304,11 @@
 
     .exp-points li {
       color: var(--muted);
-      font-size: .92rem;
-      line-height: 1.7;
+      font-size: var(--fs-body);
+      line-height: var(--lh-body);
       padding-left: 1.2rem;
       position: relative;
-      margin-bottom: .4rem;
+      margin-bottom: .6rem;
     }
 
     .exp-points li::before {
@@ -1497,7 +1517,7 @@
 
     .form-label {
       display: block;
-      font-size: .7rem;
+      font-size: var(--fs-label);
       letter-spacing: .15em;
       text-transform: uppercase;
       font-weight: 700;
@@ -1514,7 +1534,7 @@
       padding: 1.2rem 1.4rem;
       border-radius: 8px;
       font-family: 'Inter', sans-serif;
-      font-size: .95rem;
+      font-size: 1rem;
       outline: none;
       transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     }
@@ -2113,31 +2133,25 @@
   <!-- EXPERIENCE -->
   <section id="experience">
     <div class="reveal">
-      <div class="section-label">Professional Evolution</div>
-      <h2 class="section-title">The Strategic<br><em>Journey.</em></h2>
     </div>
     <div class="exp-timeline">
       <div class="exp-item reveal">
         <div class="exp-dot"></div>
-        <span class="exp-year">2026 — Present</span>
+        <span class="exp-year">2026</span>
         <div class="exp-header">
           <img src="blue%20pin%20logo.png" alt="Blue Pins Digital Logo" class="exp-logo">
           <div>
-            <div class="exp-role">Growth & Performance Strategist</div>
+            <div class="exp-role">Digital Marketing Intern</div>
             <div class="exp-company">Blue Pins Digital · Strategic Marketing Agency</div>
           </div>
         </div>
         <ul class="exp-points">
-          <li>Engineered end-to-end SEO frameworks that secured first-page rankings for high-intent commercial keywords,
-            significantly increasing qualified organic acquisition.</li>
-          <li>Architected and scaled performance-driven Meta and Google Ad campaigns, consistently delivering an average
-            ROAS of 3.8x while optimizing for minimum CPL.</li>
-          <li>Curated high-conversion content ecosystems and creative briefs that unified brand narrative and catalyzed
-            double-digit engagement growth across social platforms.</li>
-          <li>Leveraged GA4 and advanced data-driven attribution models to distill complex metrics into actionable
-            growth roadmaps, improving campaign efficiency by 25%.</li>
-          <li>Deployed sophisticated audience modeling and lookalike strategies to penetrate high-value segments,
-            resulting in a measurable surge in conversion rates.</li>
+          <li><b>SEO Optimization:</b> Executed comprehensive keyword research and deployed on-page/off-page strategies to accelerate organic search rankings.</li>
+          <li><b>Social Media Marketing:</b> Orchestrated and optimized high-impact campaigns across Meta (Instagram/Facebook) to scale engagement and brand reach.</li>
+          <li><b>Content Creation:</b> Architected engaging social assets, strategic captions, and creative concepts aligned with overarching brand narratives.</li>
+          <li><b>Campaign Management:</b> Directed the execution of Google Ads and Meta Ads frameworks specifically tuned for scalable lead generation.</li>
+          <li><b>Performance Analysis:</b> Leveraged GA4 and analytical dashboards to monitor KPIs and continuously improve campaign effectiveness.</li>
+          <li><b>Audience Targeting:</b> Applied sophisticated segmentation and modeling strategies to penetrate high-value audiences and drive conversions.</li>
         </ul>
       </div>
     </div>
@@ -2225,8 +2239,8 @@
           </div>
         </div>
         <div class="contact-social">
-          <a href="#" class="social-btn" title="LinkedIn">in</a>
-          <a href="#" class="social-btn" title="Instagram">ig</a>
+          <a href="https://www.linkedin.com/in/meenu-john-46a175292?utm_source=share_via&utm_content=profile&utm_medium=member_android" class="social-btn" title="LinkedIn">in</a>
+          <a href="https://www.instagram.com/faith.in.jesus_official?igsh=MTBiam0yZWRmamtmNg==" class="social-btn" title="Instagram">ig</a>
           <a href="#" class="social-btn" title="Twitter">𝕏</a>
         </div>
       </div>
