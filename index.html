@@ -1656,50 +1656,49 @@
       transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .reveal-right.visible {
-      opacity: 1;
-      transform: translateX(0);
+    /* ── RESPONSIVE SYSTEM ── */
+    @media (max-width: 1200px) {
+      :root { --fs-base: 17px; }
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+      .portfolio-card.featured { grid-column: span 2; }
     }
 
-    /* ── MOBILE ── */
     @media (max-width: 900px) {
-
+      :root { --fs-base: 16px; }
+      
       .about-grid,
       .skills-layout,
       .contact-layout {
         grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 4rem;
       }
 
-      .about-visual {
-        display: none;
-      }
-
-      .nav-links,
-      .nav-cta {
-        display: none;
-      }
-
-      .hamburger {
-        display: flex;
-      }
+      .about-visual { display: none; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
 
       .hero-stats {
-        gap: 2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2.5rem;
       }
 
-      .form-row {
-        grid-template-columns: 1fr;
-      }
+      .form-row { grid-template-columns: 1fr; }
     }
 
-    @media (max-width: 1100px) {
-      .portfolio-grid {
-        grid-template-columns: repeat(2, 1fr);
+    @media (max-width: 600px) {
+      :root { --fs-base: 15px; }
+      
+      section { padding: 6rem 6vw; }
+
+      .portfolio-grid,
+      .services-grid,
+      .testi-grid {
+        grid-template-columns: 1fr;
       }
 
       .portfolio-card.featured {
-        grid-column: span 2;
+        grid-column: span 1;
         flex-direction: column;
       }
 
@@ -1707,25 +1706,6 @@
       .portfolio-card.featured .portfolio-card-info {
         width: 100%;
       }
-    }
-
-    @media (max-width: 600px) {
-      section {
-        padding: 5rem 5vw;
-      }
-
-      .portfolio-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .portfolio-card.featured {
-        grid-column: span 1;
-      }
-
-      .testi-grid {
-        grid-template-columns: 1fr;
-      }
-
       .services-grid {
         grid-template-columns: 1fr;
       }
@@ -1742,6 +1722,11 @@
   <!-- NAV -->
   <nav id="nav">
     <a href="#hero" class="nav-logo">MJ.</a>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
@@ -2366,14 +2351,29 @@
     function toggleMenu() {
       menuOpen = !menuOpen;
       const links = document.querySelector('.nav-links');
-      const cta = document.querySelector('.nav-cta');
+      const hamburger = document.querySelector('.hamburger');
+      
+      links.classList.toggle('active');
+      
+      // Animate hamburger
+      const spans = hamburger.querySelectorAll('span');
       if (menuOpen) {
-        links.style.cssText = 'display:flex;flex-direction:column;position:fixed;top:70px;left:0;right:0;background:rgba(6,8,16,.97);padding:2rem 5vw;gap:1.5rem;z-index:800;';
-        if (cta) cta.style.display = 'block';
+        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
       } else {
-        links.style.cssText = 'display:none';
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
       }
     }
+
+    // Close menu on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (menuOpen) toggleMenu();
+      });
+    });
 
     // ── FORM SUBMIT ──
     function handleSubmit(btn) {
